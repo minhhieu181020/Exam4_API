@@ -7,10 +7,6 @@
         <import type="android.view.View"></import>
 
         <variable
-            name="provinceViewModel"
-            type="com.example.exam4_apilifecard.viewmodel.ProvinceViewModel" />
-
-        <variable
             name="distric"
             type="com.example.exam4_apilifecard.viewmodel.DistricViewModel" />
 
@@ -22,7 +18,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listprovince"
+            android:id="@+id/listDistric"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

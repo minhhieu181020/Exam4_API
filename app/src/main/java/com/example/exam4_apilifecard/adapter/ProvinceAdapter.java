@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,29 +27,37 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.province_list, parent, false);
-
-        ViewHolder vh = new ViewHolder(view);
-
-        return vh;
+        View view = LayoutInflater.from(context).inflate(R.layout.province_list, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ListArea listArea = listAreas.get(position);
+        holder.tvProvince.setText(listArea.getAreaName());
+        holder.tvProvince.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, holder.tvProvince.getText().toString(), Toast.LENGTH_SHORT).show();
+                holder.tvProvince.setBackgroundColor(2);
 
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (listAreas == null)
+            return 0;
+        return listAreas.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvProvince;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvProvince=itemView.findViewById(R.id.tvProvince);
+            tvProvince = itemView.findViewById(R.id.tvProvince);
         }
     }
 }
