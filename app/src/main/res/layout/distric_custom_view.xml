@@ -7,16 +7,24 @@
         <import type="android.view.View"></import>
 
         <variable
-            name="distric"
+            name="districviewmodel"
             type="com.example.exam4_apilifecard.viewmodel.DistricViewModel" />
 
     </data>
 
     <LinearLayout
+        android:background="#EDE1E1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <ImageView
+            android:onClick="@{()->districviewmodel.onclickBack()}"
+            android:id="@+id/imgback"
+            android:layout_width="44dp"
+            android:layout_height="49dp"
+            android:src="@drawable/ic_back">
 
+        </ImageView>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listDistric"
 

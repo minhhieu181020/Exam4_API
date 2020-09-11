@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.example.exam4_apilifecard.request.RequestApiUntils;
 import com.example.exam4_apilifecard.request.RequestBase64;
 import com.example.exam4_apilifecard.response.ResponseBase64;
 import com.example.exam4_apilifecard.service.MyRetrofit;
+import com.example.exam4_apilifecard.view.CustomView;
 import com.example.exam4_apilifecard.view.DistricCustomView;
 import com.google.gson.Gson;
 
@@ -84,11 +86,12 @@ public class ProvinceViewModel extends BaseObservable {
         ProvinceAdapter.ItemClickSupport.addTo(binding.listprovince).setOnItemClickListener(new ProvinceAdapter.ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                DistricCustomView districCustomView=new DistricCustomView((Activity) context,listAreas.get(position).getAreaCode());
-
+                DistricCustomView districCustomView = new DistricCustomView((Activity) context, listAreas.get(position).getAreaCode());
+                Toast.makeText(context,listAreas.get(position).getAreaName(),Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
 
 }

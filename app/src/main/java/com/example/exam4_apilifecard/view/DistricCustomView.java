@@ -21,7 +21,7 @@ public class DistricCustomView extends LinearLayout {
     public DistricCustomView(Context context, String body) {
         super(context);
         DistricCustomViewBinding districCustomViewBinding = DataBindingUtil.setContentView((Activity) context, R.layout.distric_custom_view);
-        districCustomViewBinding.setDistric(new DistricViewModel((Activity) context,districCustomViewBinding ,body));
+        districCustomViewBinding.setDistricviewmodel(new DistricViewModel((Activity) context,districCustomViewBinding ,body));
         districCustomViewBinding.executePendingBindings();
     }
 

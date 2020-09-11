@@ -4,7 +4,9 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.databinding.BaseObservable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -17,6 +19,8 @@ import com.example.exam4_apilifecard.request.RequestApiUntils;
 import com.example.exam4_apilifecard.request.RequestBase64;
 import com.example.exam4_apilifecard.response.ResponseBase64;
 import com.example.exam4_apilifecard.service.MyRetrofit;
+import com.example.exam4_apilifecard.view.CustomView;
+import com.example.exam4_apilifecard.view.DistricCustomView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -27,16 +31,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class WardsViewModel {
+public class WardsViewModel extends BaseObservable {
     private Context context;
     private List<ListArea> listAreas;
     private ProvinceAdapter adapterRecycleViewTinh;
     private WardsCustomViewBinding binding;
+    private String codeDis;
 
 
-    public WardsViewModel(Context context, WardsCustomViewBinding binding,String body) {
+    public WardsViewModel(Context context, WardsCustomViewBinding binding,String body, String codeDis) {
         this.context = context;
         this.binding = binding;
+        this.codeDis = codeDis;
         String json = "{\"areaType\":\"C\",\"parentCode\":\""+body+"\"}";
         String endcode=new String(Base64.encode(json.getBytes(),1));
         GetData(endcode);
@@ -84,10 +90,13 @@ public class WardsViewModel {
         ProvinceAdapter.ItemClickSupport.addTo(binding.listDistric).setOnItemClickListener(new ProvinceAdapter.ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-
+            Toast.makeText(context,listAreas.get(position).getAreaName(),Toast.LENGTH_SHORT).show();
 
             }
         });
 
+    }
+    public void onclickBack() {
+        DistricCustomView customView=new DistricCustomView(context,codeDis);
     }
 }
