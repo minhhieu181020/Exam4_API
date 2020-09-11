@@ -1,10 +1,13 @@
 package com.example.exam4_apilifecard.viewmodel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 
 import androidx.databinding.BaseObservable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.exam4_apilifecard.adapter.ProvinceAdapter;
@@ -15,6 +18,7 @@ import com.example.exam4_apilifecard.request.RequestApiUntils;
 import com.example.exam4_apilifecard.request.RequestBase64;
 import com.example.exam4_apilifecard.response.ResponseBase64;
 import com.example.exam4_apilifecard.service.MyRetrofit;
+import com.example.exam4_apilifecard.view.DistricCustomView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -38,6 +42,8 @@ public class ProvinceViewModel extends BaseObservable {
         GetData();
     }
 
+    //eyJhcmVhVHlwZSI6IkQiLCJwYXJlbnRDb2RlIjoiSERVIn0= huyen hai duong
+    //eyJhcmVhVHlwZSI6IlAiLCJwYXJlbnRDb2RlIjoiIn0= tinh
     public void GetData() {
         RequestBase64 requestBase64 = RequestApiUntils.createRequest("eyJhcmVhVHlwZSI6IlAiLCJwYXJlbnRDb2RlIjoiIn0=", context);
         Retrofit retrofit = MyRetrofit.getInstance("https://lifecardtest.viviet.vn/");
@@ -55,9 +61,9 @@ public class ProvinceViewModel extends BaseObservable {
                 ProvinceModel provinceModel = gson.fromJson(decoded, ProvinceModel.class);
                 List<ListArea> listAreaList = provinceModel.getListArea();
 
-                listAreas =new ArrayList<>();
+                listAreas = new ArrayList<>();
                 listAreas.addAll(listAreaList);
-                Log.e("data", listAreas.size()+"");
+                Log.e("data", listAreas.size() + "");
                 getList(listAreas);
             }
 
@@ -67,14 +73,22 @@ public class ProvinceViewModel extends BaseObservable {
             }
         });
     }
+
     private void getList(List arrayList) {
         binding.listprovince.setHasFixedSize(true);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         binding.listprovince.setLayoutManager(staggeredGridLayoutManager);
-        adapterRecycleViewTinh = new ProvinceAdapter(arrayList,context);
+        adapterRecycleViewTinh = new ProvinceAdapter(arrayList, context);
         binding.listprovince.setAdapter(adapterRecycleViewTinh);
+        ProvinceAdapter.ItemClickSupport.addTo(binding.listprovince).setOnItemClickListener(new ProvinceAdapter.ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                DistricCustomView districCustomView=new DistricCustomView((Activity) context,listAreas.get(position).getAreaCode());
 
+            }
+        });
 
     }
+
 }
