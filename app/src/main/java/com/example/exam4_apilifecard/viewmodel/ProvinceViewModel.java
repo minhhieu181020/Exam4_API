@@ -87,7 +87,7 @@ public class ProvinceViewModel extends BaseObservable {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 DistricCustomView districCustomView = new DistricCustomView((Activity) context, listAreas.get(position).getAreaCode());
-                Toast.makeText(context,listAreas.get(position).getAreaName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, listAreas.get(position).getAreaName(), Toast.LENGTH_SHORT).show();
             }
         });
 

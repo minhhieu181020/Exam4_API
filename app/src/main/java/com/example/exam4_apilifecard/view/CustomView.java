@@ -17,8 +17,8 @@ public class CustomView extends LinearLayout {
     public CustomView(Context context) {
         super(context);
 
-        CustomViewBinding   binding = DataBindingUtil.setContentView((Activity) context, R.layout.custom_view);
-        binding.setProvinceViewModel(new ProvinceViewModel((Activity) context,binding));
+        CustomViewBinding binding = DataBindingUtil.setContentView((Activity) context, R.layout.custom_view);
+        binding.setProvinceViewModel(new ProvinceViewModel((Activity) context, binding));
         binding.executePendingBindings();
 
 

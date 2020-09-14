@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-<data>
-    <import type="android.view.View"></import>
-    <variable
-        name="distric"
-        type="com.example.exam4_apilifecard.viewmodel.DistricViewModel" />
 
-</data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <com.example.exam4_apilifecard.view.CustomView
-        android:id="@+id/distric"
+    <data>
+
+        <import type="android.view.View"></import>
+
+        <variable
+            name="distric"
+            type="com.example.exam4_apilifecard.viewmodel.DistricViewModel" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.example.exam4_apilifecard.view.CustomView
+            android:id="@+id/distric"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </layout>

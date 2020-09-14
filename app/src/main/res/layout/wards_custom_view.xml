@@ -13,16 +13,16 @@
     </data>
 
     <LinearLayout
-        android:background="#EDE1E1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EDE1E1"
         android:orientation="vertical">
 
         <ImageView
-            android:onClick="@{()->wards.onclickBack()}"
             android:id="@+id/imgback"
             android:layout_width="44dp"
             android:layout_height="49dp"
+            android:onClick="@{()->wards.onclickBack()}"
             android:src="@drawable/ic_back">
 
         </ImageView>

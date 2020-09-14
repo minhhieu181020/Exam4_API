@@ -63,41 +63,6 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
             tvProvince = itemView.findViewById(R.id.tvProvince);
         }
     }
-//    class ItemHolder extends RecyclerView.ViewHolder {
-//
-//        //     private ImageView imgItemImage;
-//        private TextView userID, id, title, body;
-//
-//
-//        public ItemHolder(@NonNull View itemView) {
-//            super(itemView);
-//            userID = itemView.findViewById(R.id.userID);
-//            id = itemView.findViewById(R.id.id);
-//            title = itemView.findViewById(R.id.title);
-//            body = itemView.findViewById(R.id.body);
-//
-//
-//        }
-//
-//    }
-//
-//    private Bitmap loadImageFromNet(String link) {
-//
-//        URL url;
-//        Bitmap bitmap = null;
-//        try {
-//            url = new URL(link);
-//            bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-//
-//        } catch (IOException e) {
-//            Log.e("LoadImage", e + "");
-//        }
-//
-//        return bitmap;
-//
-//    }
-
-
     public static class ItemClickSupport {
         private final RecyclerView mRecyclerView;
         private OnItemClickListener mOnItemClickListener;

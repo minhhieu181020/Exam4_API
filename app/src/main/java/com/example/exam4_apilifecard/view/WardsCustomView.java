@@ -15,10 +15,10 @@ import com.example.exam4_apilifecard.viewmodel.DistricViewModel;
 import com.example.exam4_apilifecard.viewmodel.WardsViewModel;
 
 public class WardsCustomView extends LinearLayout {
-    public WardsCustomView(Context context,String body, String codeDis) {
+    public WardsCustomView(Context context, String body, String codeDis) {
         super(context);
         WardsCustomViewBinding districCustomViewBinding = DataBindingUtil.setContentView((Activity) context, R.layout.wards_custom_view);
-        districCustomViewBinding.setWards(new WardsViewModel((Activity) context,districCustomViewBinding ,body, codeDis));
+        districCustomViewBinding.setWards(new WardsViewModel((Activity) context, districCustomViewBinding, body, codeDis));
         districCustomViewBinding.executePendingBindings();
     }
 

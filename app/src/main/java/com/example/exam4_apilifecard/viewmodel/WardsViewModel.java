@@ -39,12 +39,12 @@ public class WardsViewModel extends BaseObservable {
     private String codeDis;
 
 
-    public WardsViewModel(Context context, WardsCustomViewBinding binding,String body, String codeDis) {
+    public WardsViewModel(Context context, WardsCustomViewBinding binding, String body, String codeDis) {
         this.context = context;
         this.binding = binding;
         this.codeDis = codeDis;
-        String json = "{\"areaType\":\"C\",\"parentCode\":\""+body+"\"}";
-        String endcode=new String(Base64.encode(json.getBytes(),1));
+        String json = "{\"areaType\":\"C\",\"parentCode\":\"" + body + "\"}";
+        String endcode = new String(Base64.encode(json.getBytes(), 1));
         GetData(endcode);
     }
 
@@ -90,13 +90,14 @@ public class WardsViewModel extends BaseObservable {
         ProvinceAdapter.ItemClickSupport.addTo(binding.listDistric).setOnItemClickListener(new ProvinceAdapter.ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-            Toast.makeText(context,listAreas.get(position).getAreaName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, listAreas.get(position).getAreaName(), Toast.LENGTH_SHORT).show();
 
             }
         });
 
     }
+
     public void onclickBack() {
-        DistricCustomView customView=new DistricCustomView(context,codeDis);
+        DistricCustomView customView = new DistricCustomView(context, codeDis);
     }
 }
